@@ -1,0 +1,33 @@
+html, body {
+  margin: 0
+  padding: 0;
+  background: #042A2B;
+}
+
+.container .control {
+  height: 4em;
+  width: 6em;
+  background: rgba(0, 0, 0, 0);
+  font-family: Palatino;
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #11B5BB;
+  border: 0.2em solid #11B5BB;
+  border-radius: 1em;
+  outline: none;
+}
+
+.container .control:hover:enabled {
+  background: #11B5BB;
+  color: #042A2B;
+}
+
+.container .control:active:enabled {
+  background: #0F9EA3;
+  border: #0F9EA3;
+}
+
+.container .control:disabled {
+  color: #0D888C;
+  border: 0.2em solid #0D888C;
+}

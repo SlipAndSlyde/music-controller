@@ -1,8 +1,6 @@
 # READ ME
 
 ## Introduction
-Disclaimer: I am a self-taught programming hobbyist.
-
 The objective of this program is to have a simple, practical and flexible music controller class that can be implemented in other projects.
 
 ## Features
@@ -11,12 +9,12 @@ Current features:
 - pause music
 - continue music
 - stop music
+- autoplay
 
 Upcoming features:
 - revamp design
 - volume control
 - playlists
-- autoplay
 - shuffle playlist
 
 ## Usage

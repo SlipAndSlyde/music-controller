@@ -13,15 +13,24 @@ class ButtonManager
     list.pause = document.getElementById("pause");
     list.continue = document.getElementById("continue");
     list.stop = document.getElementById("stop");
+    list.autoplay = document.getElementById("autoplay");
   }
 
-  setButtonsStatus(isPlaying, isPaused)
+  setButtonsStatus(music)
   {
     const list = this.list;
-    list.play.disabled = isPlaying;
-    list.pause.disabled = isPaused;
-    list.continue.disabled = !isPlaying || !isPaused;
-    list.stop.disabled = !isPlaying;
+    list.play.disabled = music.isPlaying;
+    list.pause.disabled = music.isPaused;
+    list.continue.disabled = !music.isPlaying || !music.isPaused;
+    list.stop.disabled = !music.isPlaying;
+
+    if(music.autoplay)
+    {
+      list.autoplay.innerText = "Autoplay: ON";
+    } else
+    {
+      list.autoplay.innerText = "Autoplay: OFF";
+    }
   }
 }
 
@@ -37,8 +46,6 @@ class MainController
   {
     const buttons = this.buttons.list;
     const music = this.music;
-
-    music.eventHandler();
 
     buttons.play.onclick = () => {
       music.playMusic();
@@ -56,6 +63,10 @@ class MainController
       music.stopMusic();
     }
 
+    buttons.autoplay.onclick = () => {
+      music.autoplay = !music.autoplay;
+    }
+
     this.tick();
   }
 
@@ -64,7 +75,8 @@ class MainController
     const buttonManager = this.buttons;
     const music = this.music;
 
-    buttonManager.setButtonsStatus(music.isPlaying, music.isPaused);
+    buttonManager.setButtonsStatus(music);
+    music.tick();
 
     window.requestAnimationFrame(() => {
       this.tick();
@@ -74,6 +86,7 @@ class MainController
 
 window.onload = () => {
   console.log("Hello world!");
+  console.log("Bug: event handler is attached to the first file only");
 
   const mainController = new MainController();
   mainController.runProgram();

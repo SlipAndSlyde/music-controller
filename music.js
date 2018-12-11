@@ -1,22 +1,37 @@
+class Music
+{
+  constructor(title, author, file)
+  {
+    this.title = title;
+    this.author = author;
+    this.file = file;
+  }
+}
+
 class MusicController
 {
   constructor()
   {
-    this.playlist = {};
+    this.playlist = [];
     this.addMusic();
-    this.currentMusic = this.playlist.rock_thing;
-    this.currentMusic.volume = 0;
-    this.isPaused = true;
+    this.pointer = 0;
+    this.currentFile.volume = 0;
+    this.autoplay = false;
+  }
+
+  get currentFile()
+  {
+    return this.playlist[this.pointer].file;
   }
 
   get volume()
   {
-    return this.currentMusic.volume;
+    return this.currentFile.volume;
   }
 
   set volume(value)
   {
-    this.currentMusic.volume = value;
+    this.currentFile.volume = value;
   }
 
   get isPlaying()
@@ -29,14 +44,20 @@ class MusicController
       If an audio has been paused at the 1:00 mark, isPlaying returns true and isPaused returns true
     */
 
-    return this.currentMusic.currentTime !== 0;
+    return this.currentFile.currentTime !== 0;
+  }
+
+  get isPaused()
+  {
+    return this.currentFile.paused;
   }
 
   addMusic()
   {
     const playlist = this.playlist;
-    playlist.skystrike = new Audio("music/skystrike_Hinkik.mp3");
-    playlist.rock_thing = new Audio("music/rock_thing_Creo.mp3");
+    //playlist[0] = new Music("Testing", "Dream", new Audio("music/testing.wav"));
+    playlist[0] = new Music("Skystrike", "Hinkik", new Audio("music/skystrike_Hinkik.mp3"));
+    playlist[1] = new Music("Rock thing", "Creo", new Audio("music/rock_thing_Creo.mp3"));
   }
 
   playMusic()
@@ -45,7 +66,7 @@ class MusicController
     {
       this.volume = 0;
       this.changeVolume(0.02, 0.9);
-      this.currentMusic.play();
+      this.currentFile.play();
     }
   }
 
@@ -53,7 +74,7 @@ class MusicController
   {
     if(this.isPlaying)
     {
-      this.currentMusic.pause();
+      this.currentFile.pause();
     }
   }
 
@@ -61,7 +82,7 @@ class MusicController
   {
     if(this.isPlaying)
     {
-      this.currentMusic.play();
+      this.currentFile.play();
     }
   }
 
@@ -72,9 +93,20 @@ class MusicController
       this.changeVolume(-0.05, 0);
 
       setTimeout(() => {
-        this.currentMusic.pause();
-        this.currentMusic.currentTime = 0;
+        this.currentFile.pause();
+        this.currentFile.currentTime = 0;
       }, 1000);
+    }
+  }
+
+  nextMusic()
+  {
+    if(this.pointer < this.playlist.length - 1)
+    {
+      this.pointer++;
+    } else
+    {
+      this.pointer = 0;
     }
   }
 
@@ -107,16 +139,23 @@ class MusicController
     }
   }
 
-  eventHandler()
+  tick()
   {
-    const music = this.currentMusic;
+    const music = this.currentFile;
 
-    music.onplay = () => {
-      this.isPaused = false;
-    }
+    if(music.ended)
+    {
+      music.pause();
+      music.currentTime = 0;
 
-    music.onpause = () => {
-      this.isPaused = true;
+      if(this.autoplay)
+      {
+        this.nextMusic();
+
+        setTimeout(() => {
+          this.playMusic();
+        }, 1000);
+      }
     }
   }
 }

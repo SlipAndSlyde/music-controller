@@ -86,7 +86,6 @@ class MainController
 
 window.onload = () => {
   console.log("Hello world!");
-  console.log("Bug: event handler is attached to the first file only");
 
   const mainController = new MainController();
   mainController.runProgram();

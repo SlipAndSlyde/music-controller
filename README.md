@@ -27,6 +27,9 @@ Music:
 - Rock Thing by Creo
 - Skystrike by Hinkik
 
+Graphics:
+- Wallpaper by Arseniic
+
 ## Thank you
 Thanks for viewing this. Feedback is always welcome!
 

@@ -3,15 +3,37 @@
   <head>
     <meta charset="utf-8">
     <title>Music Controller</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="main.css">
   </head>
   <body>
-    <div class="container">
-      <button id="play" class="control">Play</button>
-      <button id="pause" class="control">Pause</button>
-      <button id="continue" class="control">Continue</button>
-      <button id="stop" class="control">Stop</button>
-      <button id="autoplay" class="control">Autoplay</button>
+    <div class="container-main">
+      <h1 class="title">
+        <i class="fas fa-headphones-alt"></i>
+        Music<span id="title">Controller</span>
+        <i class="fas fa-headphones-alt"></i>
+      </h1>
+      <p>Now playing: none</p>
+
+      <div class="container">
+        <button id="play" class="control">
+          <i class="fas fa-play"></i>
+        </button>
+
+        <button id="pause" class="control">
+          <i class="fas fa-pause"></i>
+        </button>
+
+        <button id="continue" class="control">
+          <i class="fas fa-angle-double-right"></i>
+        </button>
+
+        <button id="stop" class="control">
+          <i class="fas fa-stop"></i>
+        </button>
+      </div>
+
+      <button id="autoplay" class="settings">Autoplay</button>
     </div>
 
     <script src="script.js"></script>

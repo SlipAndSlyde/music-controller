@@ -1,38 +1,87 @@
-html, body {
-  margin: 0
-  padding: 0;
-  background: #042A2B;
+@font-face {
+  font-family: Brooklyn;
+  src: url("fonts/the-brooklyn-smooth.otf");
 }
 
-.container .control {
-  height: 4em;
-  width: 6em;
-  margin: 0.5em;
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+button {
   background: rgba(0, 0, 0, 0);
-  font-family: Palatino;
-  font-size: 1.1em;
-  font-weight: bold;
-  color: #11B5BB;
-  border: 0.2em solid #11B5BB;
-  border-radius: 1em;
+  border: none;
   outline: none;
 }
 
-.container .control:hover:enabled {
-  background: #11B5BB;
-  color: #042A2B;
+button:hover:enabled {
+  cursor: pointer;
 }
 
-.container .control:active:enabled {
-  background: #0F9EA3;
-  border: #0F9EA3;
+.container-main {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: url('img/wallpaper.png') no-repeat center;
+  background-size: cover;
+  font-family: Brooklyn;
+  color: #f2f2f2;
 }
 
-.container .control:disabled {
-  color: #0D888C;
-  border: 0.2em solid #0D888C;
+.container-main > * {
+  opacity: 0.8;
 }
 
-.container #autoplay {
-  width: 10em;
+.container-main .title {
+  font-size: 4em;
+  font-weight: lighter;
+}
+
+.container-main .title i {
+  margin: 0 0.3em 0 0.3em;
+}
+
+.container-main #title {
+  font-weight: bold;
+}
+
+.container-main p {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.container-main .control {
+  height: 3em;
+  width: 3em;
+  margin: 0.5em;
+  font-size: 1.2em;
+  color: #f2f2f2;
+  border: 0.15em solid #f2f2f2;
+  border-radius: 50%;
+  outline: none;
+}
+
+.container-main .control:hover:enabled {
+  background: #f2f2f2;
+  color: #b3b3b3;
+}
+
+.container-main .control:active:enabled {
+  background: #e6e6e6;
+  border-color: #e6e6e6;
+}
+
+.container-main .control:disabled {
+  color: #b3b3b3;
+  border-color: #b3b3b3;
+}
+
+.container-main .settings {
+  margin-top: 6em;
+  font-family: Brooklyn;
+  font-weight: bold;
+  font-size: 0.9em;
+  color: #f2f2f2;
 }

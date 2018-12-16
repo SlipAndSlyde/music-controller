@@ -6,6 +6,11 @@ class Music
     this.author = author;
     this.file = file;
   }
+
+  get info()
+  {
+    return this.title + " by " + this.author;
+  }
 }
 
 class MusicController
@@ -19,9 +24,14 @@ class MusicController
     this.autoplay = false;
   }
 
+  get currentMusic()
+  {
+    return this.playlist[this.pointer];
+  }
+
   get currentFile()
   {
-    return this.playlist[this.pointer].file;
+    return this.currentMusic.file;
   }
 
   get volume()

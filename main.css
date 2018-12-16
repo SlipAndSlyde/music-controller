@@ -37,6 +37,7 @@ button:hover:enabled {
 .container-main .title {
   font-size: 4em;
   font-weight: lighter;
+  margin-bottom: 1.6em;
 }
 
 .container-main .title i {
@@ -79,7 +80,7 @@ button:hover:enabled {
 }
 
 .container-main .settings {
-  margin-top: 6em;
+  margin-top: 8em;
   font-family: Brooklyn;
   font-weight: bold;
   font-size: 0.9em;

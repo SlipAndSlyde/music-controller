@@ -40,6 +40,7 @@ class MainController
   {
     this.buttons = new ButtonManager();
     this.music = new MusicController();
+    this.description = document.getElementById("description");
   }
 
   runProgram()
@@ -70,13 +71,27 @@ class MainController
     this.tick();
   }
 
+  updateDescription(music)
+  {
+    const description = this.description;
+
+    if(music.isPlaying)
+    {
+      description.innerText = "Now playing: " + music.currentMusic.info;
+    } else
+    {
+      description.innerText = "Now playing: none";
+    }
+  }
+
   tick()
   {
     const buttonManager = this.buttons;
     const music = this.music;
 
-    buttonManager.setButtonsStatus(music);
     music.tick();
+    this.updateDescription(music);
+    buttonManager.setButtonsStatus(music);
 
     window.requestAnimationFrame(() => {
       this.tick();

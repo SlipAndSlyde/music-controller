@@ -10,11 +10,11 @@ Current features:
 - continue music
 - stop music
 - autoplay
+- user-friendly interface
 
 Upcoming features:
-- revamp design
 - volume control
-- playlists
+- skip music
 - shuffle playlist
 
 ## Usage

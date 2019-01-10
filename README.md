@@ -1,6 +1,9 @@
 # READ ME
 
 ## Introduction
+This project is an extension of:
+https://github.com/SlipAndSlyde/frameworks/tree/master/music-controller
+
 The objective of this program is to have a simple, practical and flexible music controller class that can be implemented in other projects.
 
 ## Features
